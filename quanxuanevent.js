@@ -20,6 +20,7 @@ $(document).on('click',".selectRowColDate",function(){
   }else{
     $(this).data('status','selected_all')
   }
+ })
 
 $(document).on('click',".selectColDate",function(){
 	var col = $(this).parent().find('th').index($(this)[0])+1;
