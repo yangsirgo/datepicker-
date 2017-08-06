@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<style>
+	.fullYearPicker,.fullYearPicker table{font-size:12px}
+	.fullYearPicker div.year{text-align:center}
+	.fullYearPicker div.year a{margin-right:30px}
+	.fullYearPicker div.year a.next{margin-right:0;margin-left:30px}
+	.fullYearPicker table{background:#888;margin-top:5px;float:left;margin-right:10px}
+	.fullYearPicker table.right{margin-right:0}
+	.fullYearPicker table th.head{text-align:center;line-height:13px;cursor:default;background:#fff}
+	.fullYearPicker table td{background:#fff;text-align:center;line-height:13px;cursor:pointer}
+	.fullYearPicker table th{background:#aaa;}
+	.fullYearPicker table td.weekend,.fullYearPicker table th.weekend{background:#ccc;color:blue;}
+	.fullYearPicker table td.disabled{color:#f00;text-decoration:line-through;cursor:not-allowed}
+	.fullYearPicker table td.selected{background:green;color:#fff}
+	.fullYearPicker table td.empty{text-decoration:none;cursor:default}
+	.fullYearPicker br{clear:both}
+</style>
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.7.1/jquery.min.js"></script>
+<div id="div1"></div>
+<input type="button" value="获取日历当前选中值" />
+<input type="button" value="更新日历值" />
+<input type="button" value="设置为指定年份" />
+<input type="button" value="设置为指定星期不可选" />
+<input type="button" value="设置制定日期单元格背景色" />
+<div>
+	<input type="text" value="" id="startmonth"/>
+	<input type="text" value="" id="endmonth"/>
+	<button id="turnmonth">变成区间的月份</button>
+</div>
+<script src="fullYearPicker.js"></script>
+<script src="quanxuanevent.js"></script>
+<script>
+
+
+	//示例
+	$('#div1').fullYearPicker({
+		disabledDay: '',
+		value: ['2017-6-25', '2017-12-26'],
+		startmonth:'20170625',
+		endmonth:'20170925',
+		yearScale: { min: 2000, max: 2070 },
+		cellClick: function (dateStr, isDisabled) {
+			console.log(arguments)
+		}
+	});
+	$('input').click(function () {
+		switch (this.value) {
+			case '获取日历当前选中值':
+				alert($('#div1').fullYearPicker('getSelected'));
+				break;
+			case '更新日历值':
+				$('#div1').fullYearPicker('acceptChange');
+				alert('更新值成功，切换年份查看效果');
+				break;
+			case '设置为指定年份':
+				var year = prompt('请输入4位年份数字');
+				if (/^\d{4}$/.test(year)) $('#div1').fullYearPicker('setYear', parseInt(year));
+				else alert('年份为4位数字！');
+				break;
+			case '设置为指定星期不可选':
+				var day = prompt('请输入0~6的数字，不输入则设置所有星期可选');
+				if (/^[0-6]*$/.test(day)) $('#div1').fullYearPicker('setDisabledDay', day);
+				else alert('请输入0~6的数字！');
+				break;
+			case '设置制定日期单元格背景色':
+				$('#div1').fullYearPicker('setColors', {
+					dc: [
+						{d:'2017-9-1'},
+						{ d: '2017-6-1', c: 'blue' },
+						{ d: '2017-5-1', c: 'yellow' },
+						{ d: '2017-8-1', c: 'green' }
+					]
+				});
+				break;
+		}
+	});
+	$('#turnmonth').click(function(){
+		$('#div1').fullYearPicker('setqujian',{
+			star:$('#startmonth').val(),
+			end:$('#endmonth').val()
+		})
+	})
+
+
+</script>
+</body>
+</html>
