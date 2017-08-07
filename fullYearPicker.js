@@ -10,13 +10,14 @@
 		return cls == '' ? '' : ' class="' + cls + '"';
 	}
 	function renderMonth(year, month, clear, disabledDay, values) {
-		var d = new Date(year, month - 1, 1), s = '<table cellpadding="3" cellspacing="1" border="0"' + (clear ? ' class="right"' : '') + '>'
-			+ '<tr><th colspan="7" class="head">' + year + '年' + month + '月</th></tr>' +
-			'<tr><th class="selectRowColDate"></th><th class="selectColDate"></th><th class="selectColDate"></th><th class="selectColDate"></th><th class="selectColDate"></th><th class="selectColDate"></th><th class="selectColDate"></th><th class="selectColDate"></th></tr>'
+		console.log(month);
+		var d = new Date(year, month - 1, 1), s = '<table bordercolor="black" border="1" cellspacing="0" cellpadding="0"' + (clear ? ' class="right"' : '') + '>'
+			+ '<tr><th colspan="8" class="head">' + year + '年' + month + '月</th></tr>' +
+			'<tr><th class="selectRowColDate">+</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th></tr>'
 			+ '<tr><th></th><th class="weekend">日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th class="weekend">六</th></tr>';
 		var dMonth = month - 1;
 		var firstDay = d.getDay(), hit = false;
-		s += '<tr><td class="selectRowDate"></td>';
+		s += '<tr><td class="selectRowDate">→</td>';
 		for (var i = 0; i < 7; i++)
 			if (firstDay == i || hit) {
 				s += '<td' + tdClass(i, disabledDay, true, values, year + '-' + month + '-' + d.getDate()) + '>' + d.getDate() + '</td>';
@@ -25,7 +26,7 @@
 			} else s += '<td' + tdClass(i, disabledDay, false) + '>&nbsp;</td>';
 		s += '</tr>';
 		for (var i = 0; i < 5; i++) {
-			s += '<tr><td class="selectRowDate"></td>';
+			s += '<tr><td class="selectRowDate">→</td>';
 			for (var j = 0; j < 7; j++) {
 				s += '<td' + tdClass(j, disabledDay, d.getMonth() == dMonth, values, year + '-' + month + '-' + d.getDate()) + '>' + (d.getMonth() == dMonth ? d.getDate() : '&nbsp;') + '</td>';
 				d.setDate(d.getDate() + 1);
@@ -34,7 +35,9 @@
 		}
 		return s + '</table>' + (clear ? '<br>' : '');
 	}
-	function getDateStr(td) { return td.parentNode.parentNode.rows[0].cells[0].innerHTML.replace(/[年月]/g, '-') + td.innerHTML }
+	function getDateStr(td) {
+		return td.parentNode.parentNode.rows[0].cells[0].innerHTML.replace(/[年月]/g, '-') + td.innerHTML
+	}
 	function renderYear(year, el, disabledDay, value,monthnum,startmonth) {
 		el.find('td').unbind();
 		var s = '', values = ',' + value.join(',') + ',';
@@ -69,9 +72,12 @@
 			else if (config == 'setColors') {//设置单元格颜色 param格式为{defaultColor:'#f00',dc:[{d:'2017-8-2',c:'blue'}..]}，dc数组c缺省会用defaultColor代替，defaultColor也缺省默认红色
 				return me.find('td').each(function () {
 					var d = getDateStr(this);
+					console.log(d);
 					for (var i = 0; i < param.dc.length; i++)
-						if (d == param.dc[i].d)
+						if (d == param.dc[i].d){
 							this.style.backgroundColor = param.dc[i].c || param.defaultColor || '#f00';
+							$(this).addClass('disabled').attr('title',param.dc[i].title||'');
+						}
 				});
 			}else if(config == 'setqujian'){
 				me.data('config').startmonth = param.star;
@@ -138,8 +144,8 @@
 			});
 			var qujianObj = qujian(newConifg.startmonth,newConifg.endmonth);
 			if(qujianObj.zhengnian==0){
-				var startmonth = qujianObj.staryear_monthnum;
-				var monthnum = qujianObj.endyear_monthnum;
+				var startmonth = parseInt(qujianObj.staryear_monthnum);
+				var monthnum = parseInt(qujianObj.endyear_monthnum);
 				var year =qujianObj.staryear;
 				renderYear(year, me, newConifg.disabledDay, newConifg.value,monthnum,startmonth);
 			}else if(qujianObj.zhengnian>0){

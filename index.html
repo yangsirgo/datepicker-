@@ -10,16 +10,29 @@
 	.fullYearPicker div.year{text-align:center}
 	.fullYearPicker div.year a{margin-right:30px}
 	.fullYearPicker div.year a.next{margin-right:0;margin-left:30px}
-	.fullYearPicker table{background:#888;margin-top:5px;float:left;margin-right:10px}
+	.fullYearPicker table{background:#888;margin-top:15px;float:left;margin-right:15px}
+	.fullYearPicker table{border:1px solid black;color: black}
 	.fullYearPicker table.right{margin-right:0}
-	.fullYearPicker table th.head{text-align:center;line-height:13px;cursor:default;background:#fff}
-	.fullYearPicker table td{background:#fff;text-align:center;line-height:13px;cursor:pointer}
+	.fullYearPicker table th.head{text-align:center;line-height:26px;cursor:default;background:#fff}
+	.fullYearPicker table td{background:#fff;text-align:center;line-height:18px;height:25px;width:25px;cursor:pointer}
 	.fullYearPicker table th{background:#aaa;}
-	.fullYearPicker table td.weekend,.fullYearPicker table th.weekend{background:#ccc;color:blue;}
-	.fullYearPicker table td.disabled{color:#f00;text-decoration:line-through;cursor:not-allowed}
-	.fullYearPicker table td.selected{background:green;color:#fff}
+	.fullYearPicker table td.weekend,.fullYearPicker table th.weekend{background:#ccc;color:black;}
+	.fullYearPicker table td.disabled{color: rgb(84, 84, 84);text-decoration:line-through;}
+	.fullYearPicker table td.selected{
+		color:blue;
+		font-weight: 800;
+		border: 1px solid blue;
+		box-shadow: 0px 0px 2px 0px blue inset;
+	}
 	.fullYearPicker table td.empty{text-decoration:none;cursor:default}
 	.fullYearPicker br{clear:both}
+	.fullYearPicker table  th.selectColDate, .fullYearPicker table th.selectRowColDate, .fullYearPicker table td.selectRowDate{
+		cursor: pointer;
+		background-color: #ffffff;
+		height: 25px;
+		font-family: Tahoma, Verdana, 宋体;
+
+	}
 </style>
 <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.7.1/jquery.min.js"></script>
 <div id="div1"></div>
@@ -41,10 +54,13 @@
 	//示例
 	$('#div1').fullYearPicker({
 		disabledDay: '',
-		value: ['2017-6-25', '2017-12-26'],
+//		value: ['2017-6-25', '2017-12-26'],
 		startmonth:'20170625',
-		endmonth:'20170925',
-		yearScale: { min: 2000, max: 2070 },
+		endmonth:'20180925',
+		yearScale: {
+			min: 2000,
+			max: 2070
+		},
 		cellClick: function (dateStr, isDisabled) {
 			console.log(arguments)
 		}
@@ -71,10 +87,14 @@
 			case '设置制定日期单元格背景色':
 				$('#div1').fullYearPicker('setColors', {
 					dc: [
-						{d:'2017-9-1'},
-						{ d: '2017-6-1', c: 'blue' },
-						{ d: '2017-5-1', c: 'yellow' },
-						{ d: '2017-8-1', c: 'green' }
+						{d:'2017-9-10'},
+						{ d: '2017-6-1', c: 'red',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'},
+						{ d: '2017-6-2', c: 'red',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'},
+						{ d: '2017-6-3', c: 'red',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'},
+						{ d: '2017-7-1', c: 'gray',title:'节假日限制'},
+						{ d: '2017-7-2', c: 'gray',title:'互斥广告位：广告位名称'},
+						{ d: '2017-7-3', c: 'gray',title:'此时间未设置价格'},
+						{ d: '2017-9-1', c: 'green',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'}
 					]
 				});
 				break;
