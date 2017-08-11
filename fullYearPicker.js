@@ -10,7 +10,6 @@
 		return cls == '' ? '' : ' class="' + cls + '"';
 	}
 	function renderMonth(year, month, clear, disabledDay, values) {
-		console.log(month);
 		var d = new Date(year, month - 1, 1), s = '<table bordercolor="black" border="1" cellspacing="0" cellpadding="0"' + (clear ? ' class="right"' : '') + '>'
 			+ '<tr><th colspan="8" class="head">' + year + '年' + month + '月</th></tr>' +
 			'<tr><th class="selectRowColDate">+</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th></tr>'
@@ -20,7 +19,7 @@
 		s += '<tr><td class="selectRowDate">→</td>';
 		for (var i = 0; i < 7; i++)
 			if (firstDay == i || hit) {
-				s += '<td' + tdClass(i, disabledDay, true, values, year + '-' + month + '-' + d.getDate()) + '>' + d.getDate() + '</td>';
+				s += '<td' + tdClass(i, disabledDay, true, values, year + '-' + month + '-' + d.getDate()) + '>' + (d.getDate()<10?('0'+d.getDate()):d.getDate()) + '</td>';
 				d.setDate(d.getDate() + 1);
 				hit = true;
 			} else s += '<td' + tdClass(i, disabledDay, false) + '>&nbsp;</td>';
@@ -28,7 +27,7 @@
 		for (var i = 0; i < 5; i++) {
 			s += '<tr><td class="selectRowDate">→</td>';
 			for (var j = 0; j < 7; j++) {
-				s += '<td' + tdClass(j, disabledDay, d.getMonth() == dMonth, values, year + '-' + month + '-' + d.getDate()) + '>' + (d.getMonth() == dMonth ? d.getDate() : '&nbsp;') + '</td>';
+				s += '<td' + tdClass(j, disabledDay, d.getMonth() == dMonth, values, year + '-' + month + '-' + d.getDate()) + '>' + (d.getMonth() == dMonth ? (d.getDate()<10?('0'+d.getDate()):d.getDate()) : '&nbsp;') + '</td>';
 				d.setDate(d.getDate() + 1);
 			}
 			s += '</tr>';
@@ -38,13 +37,14 @@
 	function getDateStr(td) {
 		return td.parentNode.parentNode.rows[0].cells[0].innerHTML.replace(/[年月]/g, '-') + td.innerHTML
 	}
-	function renderYear(year, el, disabledDay, value,monthnum,startmonth) {
+	function renderYear(year, el, disabledDay, value,maxmonthnum,startmonth,br_num) {
 		el.find('td').unbind();
 		var s = '', values = ',' + value.join(',') + ',';
-		var monthnum = monthnum || 12;
+		var maxmonthnum = maxmonthnum || 12;
 		var startmonth = startmonth || 1;
-		for (var i = startmonth; i <= monthnum; i++) {
-			s += renderMonth(year, i, i % 4 == 0, disabledDay, values);
+		for (var i = startmonth; i <= maxmonthnum; i++) {
+			i<10?(i='0'+i):i;
+			s += renderMonth(year, i, false, disabledDay, values);
 		}
 
 		el.find('div.picker').append(s).find('td').click(function () {
@@ -53,7 +53,6 @@
 				el.data('config').cellClick(getDateStr(this), this.className.indexOf('disabled') != -1);
 		});
 	}
-	//Power by Showbo,http://www.w3dev.cn/
 	//@config：配置，具体配置项目看下面
 	//@param：为方法时需要传递的参数
 	$.fn.fullYearPicker = function (config, param) {
@@ -72,7 +71,6 @@
 			else if (config == 'setColors') {//设置单元格颜色 param格式为{defaultColor:'#f00',dc:[{d:'2017-8-2',c:'blue'}..]}，dc数组c缺省会用defaultColor代替，defaultColor也缺省默认红色
 				return me.find('td').each(function () {
 					var d = getDateStr(this);
-					console.log(d);
 					for (var i = 0; i < param.dc.length; i++)
 						if (d == param.dc[i].d){
 							this.style.backgroundColor = param.dc[i].c || param.defaultColor || '#f00';
@@ -86,11 +84,19 @@
 				me.fullYearPicker({
 					disabledDay: me.data('config').disabledDay,
 					value:  me.data('config').value,
-					startmonth: param.star,
+					startmonth: param.start,
 					endmonth: param.end,
 					yearScale: me.data('config').yearScale,
 					cellClick: me.data('config').cellClick
 				});
+			}else if(config == 'setDisabledDay'){
+				me.data('config').disabledDay = param;//更新不可点击星期
+				if (param) {
+					me.find('table tr:gt(1)').find('td').each(function () {
+						if (param.indexOf(this.cellIndex) != -1)
+							this.className = (this.className || '').replace('selected', '') + (this.className ? ' ' : '') + 'disabled';
+					});
+				}
 			}
 			else {
 				me.find('td.disabled').removeClass('disabled');
@@ -111,7 +117,6 @@
 		//@yearScale:配置这个年份变为下拉框，格式如{min:2000,max:2020}
 		config = $.extend({ year: new Date().getFullYear(), disabledDay: '', value: [] }, config);
 		return this.addClass('fullYearPicker').each(function () {
-
 			var me = $(this), year = config.year || new Date().getFullYear(),
 				newConifg = {
 					cellClick: config.cellClick,
@@ -122,7 +127,6 @@
 					endmonth:config.endmonth,
 				};
 			me.data('config', newConifg);
-			console.log(newConifg)
 			var selYear = '';
 			if (newConifg.yearScale) {
 				selYear = '<select>';
@@ -131,11 +135,13 @@
 				selYear += '</select>';
 			}
 			selYear = selYear || year;
-			me.append('<div class="year"><a href="#">上一年</a>' + selYear + '年<a href="#" class="next">下一年</a></div><div class="picker"></div>')
-				.find('a').click(function (e, setYear) {
+			//me.append('<div class="year"><a href="#">上一年</a>' + selYear + '年<a href="#" class="next">下一年</a></div><div class="picker"></div>')
+			me.append('<div class="picker"></div>')
+			me.find('a').click(function (e, setYear) {
 				if (setYear) year = me.data('config').year;
 				else this.innerHTML == '上一年' ? year-- : year++;
 				me.find('select').val(year);
+				me.find('div.picker').html('');
 				renderYear(year, $(this).closest('div.fullYearPicker'), newConifg.disabledDay, newConifg.value);
 				this.parentNode.firstChild.nextSibling.data = year + '年';
 				return false;
@@ -143,25 +149,16 @@
 				me.fullYearPicker('setYear', this.value);
 			});
 			var qujianObj = qujian(newConifg.startmonth,newConifg.endmonth);
-			if(qujianObj.zhengnian==0){
-				var startmonth = parseInt(qujianObj.staryear_monthnum);
-				var monthnum = parseInt(qujianObj.endyear_monthnum);
-				var year =qujianObj.staryear;
-				renderYear(year, me, newConifg.disabledDay, newConifg.value,monthnum,startmonth);
-			}else if(qujianObj.zhengnian>0){
-//					var num = 0;
-				var monthnum = parseInt(qujianObj.staryear_monthnum);
-				var startmonth = parseInt(qujianObj.staryear_monthnum);
-				var endmonth = parseInt(qujianObj.endyear_monthnum);
-				renderYear(qujianObj.staryear, me, newConifg.disabledDay, newConifg.value,12,startmonth);//头一年
-				for (var j = 0; j < parseInt(qujianObj.zhengnian)-1; j++) {
-//						num++;
-					renderYear(parseInt(qujianObj.staryear)+1, me, newConifg.disabledDay, newConifg.value,12,1);
+			var startmonth = (qujianObj.startyear_monthnum);
+			if(qujianObj.zhengnian<0){
+				renderYear(qujianObj.startyear, me, newConifg.disabledDay, newConifg.value,(qujianObj.endyear_monthnum),startmonth);
+			}else if(qujianObj.zhengnian>=0){
+				renderYear((qujianObj.startyear), me, newConifg.disabledDay, newConifg.value,12,startmonth);//头一年
+				for (var j = 1; j < (qujianObj.zhengnian)+1; j++) {
+					renderYear((qujianObj.startyear)+j, me, newConifg.disabledDay, newConifg.value,12,1);
 				}
-				console.log(parseInt(qujianObj.staryear)+parseInt(qujianObj.zhengnian));
-				renderYear(parseInt(qujianObj.staryear)+parseInt(qujianObj.zhengnian), me, newConifg.disabledDay, newConifg.value,endmonth,1);//最后一年
+				renderYear((qujianObj.startyear)+(qujianObj.zhengnian)+1, me, newConifg.disabledDay, newConifg.value, (qujianObj.endyear_monthnum),1);//最后一年
 			}
-
 		});
 	};
 })();
@@ -170,26 +167,25 @@
  *
  * */
 function qujian(start,end){
-	if((!start)||(!end)){
+	var reg = /^\d{4}-\d{2}/;
+	if(reg.test(start)&&reg.test(end)){
+		var year1 = start.substr(0, 4);
+		var year2 = end.substr(0, 4);
+		var month1 = start.substr(5, 2);
+		var month2 = end.substr(5, 2);
+	}else{
+		alert('请输入正确格式的日期，如2013-04-01');
 		return {
 			zhengnian:0,
-			staryear_monthnum:'01',
+			startyear_monthnum:'1',
 			endyear_monthnum :'12',
-			staryear:''
+			startyear:new Date().getFullYear()
 		}
 	}
-	var year1 = start.substr(0, 4);
-	var year2 = end.substr(0, 4);
-	var month1 = start.substr(4, 2);
-	var month2 = end.substr(4, 2);
-	var zhengniannum = null,staryear_month = null,endyear_month = null;
-	zhengniannum = year2 - year1;
-	staryear_month = month1;
-	endyear_month = month2;
 	return {
-		zhengnian:zhengniannum,
-		staryear_monthnum:staryear_month,
-		endyear_monthnum :endyear_month,
-		staryear:year1
+		zhengnian:parseInt(year2 - year1 - 1),
+		startyear_monthnum:parseInt(month1),
+		endyear_monthnum :parseInt(month2),
+		startyear:parseInt(year1)
 	}
 }

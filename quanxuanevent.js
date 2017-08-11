@@ -16,9 +16,9 @@ $(document).on('click',".selectRowColDate",function(){
 	})
   if(parentNode.find('td.selected').length==isselected_num&&$(this).data('status')=='selected_all'){
     parentNode.find('td').removeClass('selected');
-    $(this).data('status','selected_no')
+    $(this).data('status','selected_no');
   }else{
-    $(this).data('status','selected_all')
+    $(this).data('status','selected_all');
   }
  })
 
