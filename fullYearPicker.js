@@ -56,7 +56,7 @@
 	//@config：配置，具体配置项目看下面
 	//@param：为方法时需要传递的参数
 	$.fn.fullYearPicker = function (config, param) {
-		if (config === 'setqujian' ||config === 'setDisabledDay' || config === 'setYear' || config === 'getSelected' || config === 'acceptChange' || config === 'setColors') {//方法
+		if (config === 'setqujian' ||config === 'setDisabledDay' || config === 'setYear' || config === 'getSelected' || config === 'acceptChange' || config === 'setColors'|| config === 'above_disable') {//方法
 			var me = $(this);
 			if (config == 'setYear') {//重置年份
 				me.data('config').year = param;//更新缓存数据年份
@@ -97,6 +97,8 @@
 							this.className = (this.className || '').replace('selected', '') + (this.className ? ' ' : '') + 'disabled';
 					});
 				}
+			}else if(config == 'above_disable'){
+
 			}
 			else {
 				me.find('td.disabled').removeClass('disabled');
