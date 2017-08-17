@@ -3,23 +3,29 @@
  */
 
 $(document).on('click',".selectRowColDate",function(){
-  var parentNode = $(this).parents('table');
-  var isselected_num = 0;
-	parentNode.find('td').each(function(){
-	    if($(this).hasClass('selectRowDate')||$(this).hasClass('empty')||$(this).hasClass('disabled')){
-	      return true;
-	    }
-        isselected_num++;
-	    if(!$(this).hasClass('selected')){
-	    $(this).addClass('selected');
-	    }
-	})
-  if(parentNode.find('td.selected').length==isselected_num&&$(this).data('status')=='selected_all'){
-    parentNode.find('td').removeClass('selected');
-    $(this).data('status','selected_no');
-  }else{
-    $(this).data('status','selected_all');
-  }
+	  var parentNode = $(this).parents('table');
+	  var isselected_num = 0;//已选择的日期列
+	  var standby_num = 0;//待选择的日期列
+		parentNode.find('td').each(function(){
+		    if($(this).hasClass('selectRowDate')||$(this).hasClass('empty')||$(this).hasClass('disabled')){
+		        return true;
+		    }
+			standby_num++;
+		    if(!$(this).hasClass('selected')){
+		        $(this).addClass('selected');
+		    }else{
+			    isselected_num++;
+		    }
+		})
+		if(standby_num==isselected_num){
+			$(this).data('status','selected_all');
+		}
+	  if(parentNode.find('td.selected').length==standby_num&&$(this).data('status')=='selected_all'){
+	    parentNode.find('td').removeClass('selected');
+	    $(this).data('status','selected_no');
+	  }else{
+	    $(this).data('status','selected_all');
+	  }
  })
 
 $(document).on('click',".selectColDate",function(){

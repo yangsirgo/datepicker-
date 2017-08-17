@@ -51,19 +51,45 @@
 <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.7.1/jquery.min.js"></script>
 <div id="div1"></div>
 
-<script src="fullYearPicker.js"></script>
-<script src="quanxuanevent.js"></script>
+<!--<script src="fullYearPicker.js"></script>-->
+<!--<script src="quanxuanevent.js"></script>-->
+<script src="datePicker.min.js"></script>
 <script>
 	//示例
 	$('#div1').fullYearPicker({
-//		disabledDay: '',
-//		value: ['2017-6-25', '2017-12-26'],
+		value: ["2017-09-01",
+	"2017-09-02",
+	"2017-09-03",
+	"2017-09-04",
+	"2017-09-05",
+	"2017-09-06",
+	"2017-09-07",
+	"2017-09-08",
+	"2017-09-09",
+	"2017-09-10",
+	"2017-09-11",
+	"2017-09-12",
+	"2017-09-13",
+	"2017-09-14",
+	"2017-09-15",
+	"2017-09-16",
+	"2017-09-17",
+	"2017-09-18",
+	"2017-09-19",
+	"2017-09-20",
+	"2017-09-21",
+	"2017-09-22",
+	"2017-09-23",
+	"2017-09-24",
+	"2017-09-25",
+	"2017-09-26",
+	"2017-09-27",
+	"2017-09-28",
+	"2017-09-29",
+	"2017-09-30"],//哪天被选中
 		startmonth:'2017-06-25',
 		endmonth:'2018-09-25',
-//		yearScale: {
-//			min: 2000,
-//			max: 2070
-//		},
+		predisabled:true,//以前的日期是否disabled,
 		cellClick: function (dateStr, isDisabled) {
 			console.log(arguments)
 		}
@@ -71,25 +97,11 @@
 	$('input').click(function () {
 		switch (this.value) {
 			case '获取日历当前选中值':
-				alert($('#div1').fullYearPicker('getSelected'));
+				console.log($('#div1').fullYearPicker('getSelected'));
 				break;
 			case '获取日历当前选中值':
 				alert($('#div1').fullYearPicker('getSelected'));
 				break;
-//			case '更新日历值':
-//				$('#div1').fullYearPicker('acceptChange');
-//				alert('更新值成功，切换年份查看效果');
-//				break;
-//			case '设置为指定年份':
-//				var year = prompt('请输入4位年份数字');
-//				if (/^\d{4}$/.test(year)) $('#div1').fullYearPicker('setYear', parseInt(year));
-//				else alert('年份为4位数字！');
-//				break;
-//			case '设置为指定星期不可选':
-//				var day = prompt('请输入0~6的数字，不输入则设置所有星期可选');
-//				if (/^[0-6]*$/.test(day)) $('#div1').fullYearPicker('setDisabledDay', day);
-//				else alert('请输入0~6的数字！');
-//				break;
 			case '设置制定日期单元格背景色':
 					/*
 					* d 需要设置的日期 格式是2017-06-01
@@ -105,7 +117,7 @@
 						{ d: '2017-07-01', c: 'gray',title:'节假日限制'},
 						{ d: '2017-07-02', c: 'gray',title:'互斥广告位：广告位名称'},
 						{ d: '2017-07-03', c: 'gray',title:'此时间未设置价格'},
-						{ d: '2017-09-01', c: 'green',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'}
+						{ d: '2017-08-01', c: 'green',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'}
 					]
 				});
 				break;
@@ -117,13 +129,6 @@
 			end:$('#endmonth').val()
 		})
 	})
-	$('#disabled_above').click(function(){
-		$('#div1').fullYearPicker('above_disable',{
-			start:$('#startmonth').val(),
-			end:$('#endmonth').val()
-		})
-	})
-
 </script>
 </body>
 </html>

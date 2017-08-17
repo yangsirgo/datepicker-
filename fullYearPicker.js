@@ -2,14 +2,39 @@
  * Created by yang.guochao on 2017/8/4.
  */
 (function () {
-	function tdClass(i, disabledDay, sameMonth, values, dateStr) {
+	Date.prototype.format = function(fmt) {
+		var o = {
+			"M+" : this.getMonth()+1,                 //月份
+			"d+" : this.getDate(),                    //日
+			"h+" : this.getHours(),                   //小时
+			"m+" : this.getMinutes(),                 //分
+			"s+" : this.getSeconds(),                 //秒
+			"q+" : Math.floor((this.getMonth()+3)/3), //季度
+			"S"  : this.getMilliseconds()             //毫秒
+		};
+		if(/(y+)/.test(fmt)) {
+			fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+		}
+		for(var k in o) {
+			if(new RegExp("("+ k +")").test(fmt)){
+				fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+			}
+		}
+		return fmt;
+	}
+	function tdClass(i, disabledDay, sameMonth, values, dateStr,nowd) {
 		var cls = i == 0 || i == 6 ? 'weekend' : '';
+		if(nowd&&dateStr){
+			if(parseInt(nowd)>parseInt(dateStr.replace('-','').replace('-',''))){
+				cls += (cls ? ' ' : '') + 'disabled';
+			}
+		}
 		if (disabledDay && disabledDay.indexOf(i) != -1) cls += (cls ? ' ' : '') + 'disabled';
 		if (!sameMonth) cls += (cls ? ' ' : '') + 'empty';
 		if (sameMonth && values && cls.indexOf('disabled') == -1 && values.indexOf(',' + dateStr + ',') != -1) cls += (cls ? ' ' : '') + 'selected';
 		return cls == '' ? '' : ' class="' + cls + '"';
 	}
-	function renderMonth(year, month, clear, disabledDay, values) {
+	function renderMonth(year, month, clear, disabledDay, values,nowd) {
 		var d = new Date(year, month - 1, 1), s = '<table bordercolor="black" border="1" cellspacing="0" cellpadding="0"' + (clear ? ' class="right"' : '') + '>'
 			+ '<tr><th colspan="8" class="head">' + year + '年' + month + '月</th></tr>' +
 			'<tr><th class="selectRowColDate">+</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th><th class="selectColDate">↓</th></tr>'
@@ -19,7 +44,7 @@
 		s += '<tr><td class="selectRowDate">→</td>';
 		for (var i = 0; i < 7; i++)
 			if (firstDay == i || hit) {
-				s += '<td' + tdClass(i, disabledDay, true, values, year + '-' + month + '-' + d.getDate()) + '>' + (d.getDate()<10?('0'+d.getDate()):d.getDate()) + '</td>';
+				s += '<td' + tdClass(i, disabledDay, true, values, year + '-' + month + '-' + (d.getDate()<10?('0'+d.getDate()):d.getDate()),nowd)+ '>' + (d.getDate()<10?('0'+d.getDate()):d.getDate()) + '</td>';
 				d.setDate(d.getDate() + 1);
 				hit = true;
 			} else s += '<td' + tdClass(i, disabledDay, false) + '>&nbsp;</td>';
@@ -27,7 +52,7 @@
 		for (var i = 0; i < 5; i++) {
 			s += '<tr><td class="selectRowDate">→</td>';
 			for (var j = 0; j < 7; j++) {
-				s += '<td' + tdClass(j, disabledDay, d.getMonth() == dMonth, values, year + '-' + month + '-' + d.getDate()) + '>' + (d.getMonth() == dMonth ? (d.getDate()<10?('0'+d.getDate()):d.getDate()) : '&nbsp;') + '</td>';
+				s += '<td' + tdClass(j, disabledDay, d.getMonth() == dMonth, values, year + '-' + month + '-' + (d.getDate()<10?('0'+d.getDate()):d.getDate()),nowd) + '>' + (d.getMonth() == dMonth ? (d.getDate()<10?('0'+d.getDate()):d.getDate()) : '&nbsp;') + '</td>';
 				d.setDate(d.getDate() + 1);
 			}
 			s += '</tr>';
@@ -37,14 +62,15 @@
 	function getDateStr(td) {
 		return td.parentNode.parentNode.rows[0].cells[0].innerHTML.replace(/[年月]/g, '-') + td.innerHTML
 	}
-	function renderYear(year, el, disabledDay, value,maxmonthnum,startmonth,br_num) {
+	function renderYear(year, el, disabledDay, value,maxmonthnum,startmonth,ispdisb) {
 		el.find('td').unbind();
-		var s = '', values = ',' + value.join(',') + ',';
+		var s = '', nowt=new Date().format("yyyyMMdd"),values = ',' + value.join(',') + ',';
 		var maxmonthnum = maxmonthnum || 12;
 		var startmonth = startmonth || 1;
+		var ispdisb = ispdisb || false;
 		for (var i = startmonth; i <= maxmonthnum; i++) {
 			i<10?(i='0'+i):i;
-			s += renderMonth(year, i, false, disabledDay, values);
+			s += renderMonth(year, i, false, disabledDay, values,ispdisb?nowt:null);
 		}
 
 		el.find('div.picker').append(s).find('td').click(function () {
@@ -87,7 +113,8 @@
 					startmonth: param.start,
 					endmonth: param.end,
 					yearScale: me.data('config').yearScale,
-					cellClick: me.data('config').cellClick
+					cellClick: me.data('config').cellClick,
+					predisabled:true
 				});
 			}else if(config == 'setDisabledDay'){
 				me.data('config').disabledDay = param;//更新不可点击星期
@@ -97,8 +124,6 @@
 							this.className = (this.className || '').replace('selected', '') + (this.className ? ' ' : '') + 'disabled';
 					});
 				}
-			}else if(config == 'above_disable'){
-
 			}
 			else {
 				me.find('td.disabled').removeClass('disabled');
@@ -117,9 +142,13 @@
 		//@cellClick:单元格点击事件（可缺省）。事件有2个参数，第一个@dateStr：日期字符串，格式“年-月-日”，第二个@isDisabled，此单元格是否允许点击
 		//@value:选中的值，注意为数组字符串，格式如['2016-6-25','2016-8-26'.......]
 		//@yearScale:配置这个年份变为下拉框，格式如{min:2000,max:2020}
-		config = $.extend({ year: new Date().getFullYear(), disabledDay: '', value: [] }, config);
+		//@startmonth:配置选择的年月日，格式如2017-06-25
+		//@endmonth:配置结束的年月日，格式如2017-06-25
+		//@predisabled:今天以前的日期是否不可选，格式如true或者false,默认是false
+		config = $.extend({ year: new Date().getFullYear(), disabledDay: '', value: [],predisabled:false}, config);
 		return this.addClass('fullYearPicker').each(function () {
-			var me = $(this), year = config.year || new Date().getFullYear(),
+			var me = $(this),
+				year = config.year || new Date().getFullYear(),
 				newConifg = {
 					cellClick: config.cellClick,
 					disabledDay: config.disabledDay,
@@ -127,8 +156,10 @@
 					yearScale: config.yearScale,
 					startmonth:config.startmonth,
 					endmonth:config.endmonth,
+					predisabled:config.predisabled
 				};
 			me.data('config', newConifg);
+			//console.log(newConifg);
 			var selYear = '';
 			if (newConifg.yearScale) {
 				selYear = '<select>';
@@ -153,13 +184,13 @@
 			var qujianObj = qujian(newConifg.startmonth,newConifg.endmonth);
 			var startmonth = (qujianObj.startyear_monthnum);
 			if(qujianObj.zhengnian<0){
-				renderYear(qujianObj.startyear, me, newConifg.disabledDay, newConifg.value,(qujianObj.endyear_monthnum),startmonth);
+				renderYear(qujianObj.startyear, me, newConifg.disabledDay, newConifg.value,(qujianObj.endyear_monthnum),startmonth,newConifg.predisabled);
 			}else if(qujianObj.zhengnian>=0){
-				renderYear((qujianObj.startyear), me, newConifg.disabledDay, newConifg.value,12,startmonth);//头一年
+				renderYear((qujianObj.startyear), me, newConifg.disabledDay, newConifg.value,12,startmonth,newConifg.predisabled);//头一年
 				for (var j = 1; j < (qujianObj.zhengnian)+1; j++) {
-					renderYear((qujianObj.startyear)+j, me, newConifg.disabledDay, newConifg.value,12,1);
+					renderYear((qujianObj.startyear)+j, me, newConifg.disabledDay, newConifg.value,12,1,newConifg.predisabled);
 				}
-				renderYear((qujianObj.startyear)+(qujianObj.zhengnian)+1, me, newConifg.disabledDay, newConifg.value, (qujianObj.endyear_monthnum),1);//最后一年
+				renderYear((qujianObj.startyear)+(qujianObj.zhengnian)+1, me, newConifg.disabledDay, newConifg.value, (qujianObj.endyear_monthnum),1,newConifg.predisabled);//最后一年
 			}
 		});
 	};
