@@ -17,11 +17,21 @@ $(document).on('click',".selectRowColDate",function(){
 			    isselected_num++;
 		    }
 		})
+
 		if(standby_num==isselected_num){
 			$(this).data('status','selected_all');
 		}
-	  if(parentNode.find('td.selected').length==standby_num&&$(this).data('status')=='selected_all'){
-	    parentNode.find('td').removeClass('selected');
+
+	  if(isselected_num==standby_num&&$(this).data('status')=='selected_all'){
+		  parentNode.find('td').each(function(){
+			  /*
+			   * 对于user 会存在select和disabled 在一个日期上的情况 做判断
+			   * */
+			  if($(this).hasClass('selected')&&$(this).hasClass('disabled')){
+				  return true;
+			  }
+			  $(this).removeClass('selected');
+		  })
 	    $(this).data('status','selected_no');
 	  }else{
 	    $(this).data('status','selected_all');
@@ -48,7 +58,15 @@ $(document).on('click',".selectColDate",function(){
 		$(this).data('status','selected_all');
 	}
 	if(standby_num==isselected_num&&$(this).data('status')=='selected_all'){
-		parentNode.find("tr td:nth-child("+col+")").removeClass('selected');
+		parentNode.find("tr td:nth-child("+col+")").each(function(){
+			/*
+			 * 对于user 会存在select和disabled 在一个日期上的情况 做判断
+			 * */
+			if($(this).hasClass('selected')&&$(this).hasClass('disabled')){
+				return true;
+			}
+			$(this).removeClass('selected');
+		})
 		$(this).data('status','selected_no')
 	}else{
 		$(this).data('status','selected_all')
@@ -74,7 +92,15 @@ $(document).on('click',".selectRowDate",function(){
 		$(this).data('status','selected_all');
 	}
 	if(standby_num==isselected_num&&$(this).data('status')=='selected_all'){
-		parentNode.find('td').removeClass('selected');
+		parentNode.find('td').each(function(){
+			/*
+			* 对于user 会存在select和disabled 在一个日期上的情况 做判断
+			* */
+			if($(this).hasClass('selected')&&$(this).hasClass('disabled')){
+				return true;
+			}
+			$(this).removeClass('selected');
+		})
 		$(this).data('status','selected_no')
 	}else{
 		$(this).data('status','selected_all')
