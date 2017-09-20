@@ -93,7 +93,7 @@
 
 		el.find('div.picker').append(s).find('td').click(function () {
 			if (!/disabled|empty/g.test(this.className)) $(this).toggleClass('selected');
-			if (this.className.indexOf('empty') == -1 && typeof el.data('config').cellClick == 'function')
+			if (this.className.indexOf('empty') == -1&& !$(this).hasClass('selectRowDate') && typeof el.data('config').cellClick == 'function')
 				el.data('config').cellClick(getDateStr(this), this.className.indexOf('disabled') != -1);
 		});
 	}

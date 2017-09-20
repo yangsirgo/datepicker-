@@ -106,3 +106,6 @@ $(document).on('click',".selectRowDate",function(){
 		$(this).data('status','selected_all')
 	}
 });
+
+
+

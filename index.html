@@ -4,33 +4,79 @@
 	<meta charset="UTF-8">
 	<title>Title</title>
 	<style>
-		.fullYearPicker,.fullYearPicker table{font-size:12px}
-		.fullYearPicker div.year{text-align:center}
-		.fullYearPicker div.year a{margin-right:30px}
-		.fullYearPicker div.year a.next{margin-right:0;margin-left:30px}
-		.fullYearPicker table{background:#888;margin-top:15px;float:left;margin-right:15px}
-		.fullYearPicker table{border:1px solid black;color: black}
+		html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			outline: 0;
+			vertical-align: baseline;
+		}
+
+		.fullYearPicker,.fullYearPicker table{
+			font-size:12px
+		}
+		.fullYearPicker div.year{
+			text-align:center
+		}
+		.fullYearPicker div.year a{
+			margin-right:30px
+		}
+		.fullYearPicker div.year a.next{
+			margin-right:0;
+			margin-left:30px
+		}
+		.fullYearPicker table{
+			background:#888;
+			margin-top:15px;
+			float:left;
+			margin-right:15px}
+		.fullYearPicker table{
+			border: 1px solid #ddd;
+			color: black;
+			width: 225px;
+			height: 236px;
+		}
 		.fullYearPicker table.right{margin-right:0}
-		.fullYearPicker table th.head{text-align:center;line-height:26px;cursor:default;background:#fff}
-		.fullYearPicker table td{background:#fff;text-align:center;line-height:18px;height:26px;width:26px;cursor:pointer}
-		.fullYearPicker table th{background:#aaa;}
+		.fullYearPicker table th.head{
+			text-align:center;
+			line-height:26px;
+			cursor:default;
+			background:#fff
+		}
+		.fullYearPicker table td,.fullYearPicker table th{
+			background:#fff;
+			text-align:center;
+			line-height:26px;
+			height:26px;
+			width:26px;
+			cursor:pointer;
+			border: 1px solid #ddd;
+		}
+		.fullYearPicker table th{
+			background:#aaa;
+		}
 		.fullYearPicker table td.weekend,.fullYearPicker table th.weekend{
 			/*background:#ccc;*/
 			color:black;
 		}
-		.fullYearPicker table td.disabled{color: rgb(84, 84, 84);text-decoration:line-through;}
+		.fullYearPicker table td.disabled{
+			color: rgb(84, 84, 84);
+			text-decoration:line-through;
+		}
 		.fullYearPicker table td.selected{
 			color:blue;
 			font-weight: 800;
 			border: 1px solid blue;
 			box-shadow: 0px 0px 2px 3px blue inset;
 		}
-		.fullYearPicker table td.empty{text-decoration:none;cursor:default}
+		.fullYearPicker table td.empty{
+			text-decoration:none;
+			cursor:default
+		}
 		.fullYearPicker br{clear:both}
 		.fullYearPicker table  th.selectColDate, .fullYearPicker table th.selectRowColDate, .fullYearPicker table td.selectRowDate{
 			cursor: pointer;
 			background-color: #ffffff;
-			height: 25px;
 			font-family: Tahoma, Verdana, 宋体;
 		}
 	</style>
@@ -87,9 +133,9 @@
 				"2017-09-30"],//哪天被选中
 		startmonth:'2017-06-25',
 		endmonth:'2018-09-25',
-		pre_date_dis:'2017-09-25',//设置禁用日期之前
-		aft_date_dis:'2017-09-29',//设置禁用日期之后
-		roll_play:'user',//admin管理员,user是普通用户
+//		pre_date_dis:'2017-09-25',//设置禁用日期之前
+//		aft_date_dis:'2017-09-29',//设置禁用日期之后
+		roll_play:'admin',//admin管理员,user是普通用户
 		cellClick: function (dateStr, isDisabled) {
 			console.log(arguments)
 		}
