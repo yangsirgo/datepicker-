@@ -111,8 +111,10 @@
 		pre_date_dis:'2017-09-25',//设置禁用日期之前
 		aft_date_dis:'2017-09-29',//设置禁用日期之后
 		roll_play:'admin',//admin管理员,user是普通用户
-		cellClick: function (dateStr, isDisabled) {
+		cellClick: function (dateStr,click_t) {
 			console.log(arguments)
+			console.log($(click_t).hasClass('selected'));
+			console.log($(click_t).hasClass('disabled'));
 			/*
 			* dateStr 日期值
 			* isDisabled 是否被禁用了 禁用了就是true

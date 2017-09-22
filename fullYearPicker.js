@@ -114,9 +114,7 @@
 			}
 			else if (config == 'setColors') {//设置单元格颜色 param格式为{defaultColor:'#f00',dc:[{d:'2017-8-2',c:'blue'}..]}，dc数组c缺省会用defaultColor代替，defaultColor也缺省默认红色
 				return me.find('td').each(function () {
-					console.log(this);
 					var d = getDateStr(this);
-					console.log(d);
 					for (var i = 0; i < param.dc.length; i++)
 						if (d == param.dc[i].d){
 							this.style.backgroundColor = param.dc[i].c || param.defaultColor || '#f00';
@@ -194,7 +192,6 @@
 					roll_play:config.roll_play
 				};
 			me.data('config', newConifg);
-			//console.log(newConifg);
 			var selYear = '';
 			if (newConifg.yearScale) {
 				selYear = '<select>';
