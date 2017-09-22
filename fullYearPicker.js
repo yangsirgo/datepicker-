@@ -94,13 +94,13 @@
 		el.find('div.picker').append(s).find('td').click(function () {
 			if (!/disabled|empty/g.test(this.className)) $(this).toggleClass('selected');
 			if (this.className.indexOf('empty') == -1&& !$(this).hasClass('selectRowDate') && typeof el.data('config').cellClick == 'function')
-				el.data('config').cellClick(getDateStr(this), this.className.indexOf('disabled') != -1);
+				el.data('config').cellClick(getDateStr(this), this);
 		});
 	}
 	//@config：配置，具体配置项目看下面
 	//@param：为方法时需要传递的参数
 	$.fn.fullYearPicker = function (config, param) {
-		if (config === 'setqujian' ||config === 'setDisabledDay' || config === 'setYear' || config === 'getSelected' || config === 'acceptChange' || config === 'setColors'|| config === 'above_disable') {//方法
+		if (config === 'setqujian' ||config === 'setDisabledDay' || config === 'setYear' || config === 'getSelected' || config === 'acceptChange' || config === 'setColors'|| config === 'setDisabled') {//方法
 			var me = $(this);
 			if (config == 'setYear') {//重置年份
 				me.data('config').year = param;//更新缓存数据年份
@@ -114,7 +114,9 @@
 			}
 			else if (config == 'setColors') {//设置单元格颜色 param格式为{defaultColor:'#f00',dc:[{d:'2017-8-2',c:'blue'}..]}，dc数组c缺省会用defaultColor代替，defaultColor也缺省默认红色
 				return me.find('td').each(function () {
+					console.log(this);
 					var d = getDateStr(this);
+					console.log(d);
 					for (var i = 0; i < param.dc.length; i++)
 						if (d == param.dc[i].d){
 							this.style.backgroundColor = param.dc[i].c || param.defaultColor || '#f00';
@@ -131,7 +133,8 @@
 					startmonth: param.start,
 					endmonth: param.end,
 					yearScale: me.data('config').yearScale,
-					cellClick: me.data('config').cellClick
+					cellClick: me.data('config').cellClick,
+					roll_play: me.data('config').roll_play
 				});
 			}else if(config == 'setDisabledDay'){
 				me.data('config').disabledDay = param;//更新不可点击星期
@@ -141,6 +144,17 @@
 							this.className = (this.className || '').replace('selected', '') + (this.className ? ' ' : '') + 'disabled';
 					});
 				}
+			} else if(config == 'setDisabled'){//设置禁选日期两个参数 pre_date_dis  aft_date_dis
+				return me.find('td').each(function () {
+					var d = this.parentNode.parentNode.rows[0].cells[0].innerHTML.replace(/[年月]/g, '') + this.innerHTML;
+					if(d < Conv_date(param.pre_date_dis)){
+						$(this).addClass('disabled');
+					}else if(d > Conv_date(param.aft_date_dis)){
+						$(this).addClass('disabled');
+					}else{
+						$(this).removeClass('disabled');
+					}
+				});
 			}
 			else {
 				me.find('td.disabled').removeClass('disabled');
@@ -161,7 +175,7 @@
 		//@yearScale:配置这个年份变为下拉框，格式如{min:2000,max:2020}
 		//@startmonth:配置选择的年月日，格式如2017-06-25
 		//@endmonth:配置结束的年月日，格式如2017-06-25
-		//@pre_date_dis:这天以前的日期不可选，格式如2017-06-25
+		//@pre_date_dis:这天以前的日期不可选，格式如2017-06-25  可以在使用setDisable选项  设置
 		//@aft_date_dis:这天以后的日期不可选，格式如2017-06-25
 		//@roll_play:两种user和admin user对禁用日期可提交但是不可编辑，admin是超级管理员。
 		config = $.extend({ year: new Date().getFullYear(), disabledDay: '', value: [],pre_date_dis:false,aft_date_dis:false}, config);

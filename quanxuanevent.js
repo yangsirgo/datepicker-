@@ -34,6 +34,10 @@ $(document).on('click',".selectRowColDate",function(){
 		  })
 	    $(this).data('status','selected_no');
 	  }else{
+		  /***********************************
+		  * 选中之后的回调函数写在这里
+		  * */
+		  console.log(parentNode.fullYearPicker('getSelected'));
 	    $(this).data('status','selected_all');
 	  }
  })
@@ -69,6 +73,10 @@ $(document).on('click',".selectColDate",function(){
 		})
 		$(this).data('status','selected_no')
 	}else{
+		/*********************************************
+		 * 选中之后的回调函数写在这里
+		 * */
+		console.log(parentNode.fullYearPicker('getSelected'));
 		$(this).data('status','selected_all')
 	}
 });
@@ -103,6 +111,10 @@ $(document).on('click',".selectRowDate",function(){
 		})
 		$(this).data('status','selected_no')
 	}else{
+		/*********************************************
+		 * 选中之后的回调函数写在这里
+		 * */
+		console.log(parentNode.fullYearPicker('getSelected'));
 		$(this).data('status','selected_all')
 	}
 });
