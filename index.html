@@ -61,7 +61,8 @@
 		}
 		.fullYearPicker table td.disabled{
 			color: rgb(84, 84, 84);
-			text-decoration:line-through;
+			background-color: gray;
+			/*text-decoration:line-through;*/
 		}
 		.fullYearPicker table td.selected{
 			color:blue;
@@ -70,6 +71,7 @@
 			box-shadow: 0px 0px 2px 3px blue inset;
 		}
 		.fullYearPicker table td.empty{
+			background-color: white;
 			text-decoration:none;
 			cursor:default
 		}
@@ -95,6 +97,7 @@
 	<input type="text" value="" id="pre_date_dis"/>
 	<input type="text" value="" id="aft_date_dis"/>
 	<input id="setDisabled" type="button" value="设置禁用区间" />
+	<input id="setColor" type="button" value="设置颜色" />
 </div>
 <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.7.1/jquery.min.js"></script>
 <div id="div1"></div>
@@ -105,21 +108,21 @@
 	//示例
 	$('#div1').fullYearPicker({
 		value: ["2017-09-01",
-				"2017-09-30"],//哪天被选中
+				"2017-09-28"],//哪天被选中
 		startmonth:'2017-06-25',
 		endmonth:'2018-09-25',
-		pre_date_dis:'2017-09-25',//设置禁用日期之前
-		aft_date_dis:'2017-09-29',//设置禁用日期之后
+		pre_date_dis:'2017-09-25',//初始化设置禁用日期之前
+		aft_date_dis:'2017-09-29',//初始化设置禁用日期之后
 		roll_play:'admin',//admin管理员,user是普通用户
 		cellClick: function (dateStr,click_t) {
 			console.log(arguments)
-			console.log($(click_t).hasClass('selected'));
-			console.log($(click_t).hasClass('disabled'));
+			console.log($(click_t).hasClass('selected'));//是否选中
+			console.log($(click_t).hasClass('disabled'));//是否禁用
 			/*
 			* dateStr 日期值
 			* isDisabled 是否被禁用了 禁用了就是true
 			* */
-			alert(dateStr);
+			console.log(dateStr);
 		}
 	});
 
@@ -136,7 +139,7 @@
 			{ d: '2017-07-01', c: 'gray',title:'节假日限制'},
 			{ d: '2017-07-02', c: 'gray',title:'互斥广告位：广告位名称'},
 			{ d: '2017-07-03', c: 'gray',title:'此时间未设置价格'},
-			{ d: '2017-08-01', c: 'green',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'}
+			{ d: '2017-09-28', c: 'green',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'}
 		]
 	});
 
@@ -184,14 +187,16 @@
 		});
 		$('#div1').fullYearPicker('setColors', {
 			dc: [
-				{d:'2017-9-10'},
-				{ d: '2017-05-01', c: 'red',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'},
-				{ d: '2017-07-02', c: 'red',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'},
-				{ d: '2017-09-03', c: 'red',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'},
-				{ d: '2017-10-01', c: 'gray',title:'节假日限制'},
-				{ d: '2017-11-02', c: 'gray',title:'互斥广告位：广告位名称'},
-				{ d: '2017-12-03', c: 'gray',title:'此时间未设置价格'},
-				{ d: '2017-01-01', c: 'green',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'}
+				{ d: '2017-10-01', c: 'green',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'}
+			]
+		});
+	})
+
+	$('#setColor').click(function(){
+		$('div.picker').find('td').removeAttr("style").removeAttr("title")//清除颜色设置。
+		$('#div1').fullYearPicker('setColors', {
+			dc: [
+				{ d: '2017-09-28', c: 'green',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'}
 			]
 		});
 	})

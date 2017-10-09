@@ -115,10 +115,11 @@
 			else if (config == 'setColors') {//设置单元格颜色 param格式为{defaultColor:'#f00',dc:[{d:'2017-8-2',c:'blue'}..]}，dc数组c缺省会用defaultColor代替，defaultColor也缺省默认红色
 				return me.find('td').each(function () {
 					var d = getDateStr(this);
+					var $t = $(this);
 					for (var i = 0; i < param.dc.length; i++)
-						if (d == param.dc[i].d){
+						if (d == param.dc[i].d&&!$t.hasClass('selected')){
 							this.style.backgroundColor = param.dc[i].c || param.defaultColor || '#f00';
-							$(this).addClass('disabled').attr('title',param.dc[i].title||'');
+							$t.addClass('disabled').attr('title',param.dc[i].title||'');
 						}
 				});
 			}else if(config == 'setqujian'){
