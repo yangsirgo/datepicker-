@@ -97,7 +97,7 @@
 	<input type="text" value="" id="pre_date_dis"/>
 	<input type="text" value="" id="aft_date_dis"/>
 	<input id="setDisabled" type="button" value="设置禁用区间" />
-	<input id="setColor" type="button" value="设置颜色" />
+	<input id="setColor" type="button" value="设置颜色" style="background-color: #aaaaaa"/>
 </div>
 <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.7.1/jquery.min.js"></script>
 <div id="div1"></div>
@@ -193,10 +193,16 @@
 	})
 
 	$('#setColor').click(function(){
-		$('div.picker').find('td').removeAttr("style").removeAttr("title")//清除颜色设置。
+
+		$('div.picker').find('td').each(function(){//清除颜色设置，并清除disabled
+			var $t = $(this);
+			if(typeof($t.attr('style'))!="undefined"){
+				$t.removeAttr("style").removeAttr("title").removeClass('disabled')
+			}
+		})
 		$('#div1').fullYearPicker('setColors', {
 			dc: [
-				{ d: '2017-09-28', c: 'green',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'}
+				{ d: '2017-09-29', c: 'green',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'}
 			]
 		});
 	})

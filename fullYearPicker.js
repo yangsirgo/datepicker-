@@ -146,12 +146,18 @@
 			} else if(config == 'setDisabled'){//设置禁选日期两个参数 pre_date_dis  aft_date_dis
 				return me.find('td').each(function () {
 					var d = this.parentNode.parentNode.rows[0].cells[0].innerHTML.replace(/[年月]/g, '') + this.innerHTML;
-					if(d < Conv_date(param.pre_date_dis)){
-						$(this).addClass('disabled');
-					}else if(d > Conv_date(param.aft_date_dis)){
-						$(this).addClass('disabled');
-					}else{
-						$(this).removeClass('disabled');
+					var $t = $(this);
+					if(!$t.hasClass('selected')){//没有选中日期部分
+						if(param.pre_date_dis&&d < Conv_date(param.pre_date_dis)){
+							$t.addClass('disabled');
+						}else if(param.aft_date_dis&&d > Conv_date(param.aft_date_dis)){
+							$t.addClass('disabled');
+						}else{
+							console.log($t.attr('style'));
+							if(typeof($t.attr('style'))=="undefined"){
+								$t.removeClass('disabled');
+							}
+						}
 					}
 				});
 			}
