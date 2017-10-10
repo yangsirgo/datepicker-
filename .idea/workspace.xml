@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d69939e6-7947-44c3-8ca6-851f6e84ecbd" name="Default" comment="设置禁用的日期 对已经select的日期可以取消勾选">
+    <list default="true" id="d69939e6-7947-44c3-8ca6-851f6e84ecbd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fullYearPicker.js" afterPath="$PROJECT_DIR$/fullYearPicker.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
@@ -25,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4115108">
-              <caret line="131" column="34" selection-start-line="131" selection-start-column="34" selection-end-line="131" selection-end-column="34" />
+            <state vertical-scroll-proportion="-3.096774">
+              <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="144" selection-end-column="9" />
               <folding>
                 <element signature="n#style#0;n#input#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -37,13 +37,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fullYearPicker.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="fullYearPicker.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fullYearPicker.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.666667">
-              <caret line="122" column="60" selection-start-line="122" selection-start-column="60" selection-end-line="122" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.40863308">
+              <caret line="119" column="46" selection-start-line="119" selection-start-column="46" selection-end-line="119" selection-end-column="46" />
               <folding>
-                <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
+                <marker date="1507607784958" expanded="true" signature="2057:2540" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -63,8 +63,8 @@
         <option value="E:/js-pro/source/mall/discount/js/mallDetail.js" />
         <option value="E:/js-pro/source/mall/discount/js/mallMyorder.js" />
         <option value="E:/js-pro/source/mall/gogogo_index/gogo-SubIndex.js" />
-        <option value="$PROJECT_DIR$/fullYearPicker.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/fullYearPicker.js" />
       </list>
     </option>
   </component>
@@ -155,7 +155,13 @@
       <option name="project" value="LOCAL" />
       <updated>1507539501498</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="设置限制日期  国庆节假日设置样式">
+      <created>1507606227042</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1507606227042</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -164,6 +170,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11470216" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -172,7 +179,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -195,7 +201,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="设置了颜色的日期不可选中 修复bug" />
     <MESSAGE value="设置禁用的日期 对已经select的日期可以取消勾选" />
-    <option name="LAST_COMMIT_MESSAGE" value="设置禁用的日期 对已经select的日期可以取消勾选" />
+    <MESSAGE value="设置限制日期  国庆节假日设置样式" />
+    <option name="LAST_COMMIT_MESSAGE" value="设置限制日期  国庆节假日设置样式" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -217,7 +224,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="150" column="24" selection-start-line="156" selection-start-column="31" selection-end-line="156" selection-end-column="68" />
           <folding>
-            <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
+            <marker date="1507607784958" expanded="true" signature="2057:2540" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -245,7 +252,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="119" column="103" selection-start-line="119" selection-start-column="103" selection-end-line="119" selection-end-column="103" />
           <folding>
-            <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
+            <marker date="1507607784958" expanded="true" signature="2057:2540" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -272,7 +279,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="116" column="45" selection-start-line="116" selection-start-column="45" selection-end-line="116" selection-end-column="45" />
           <folding>
-            <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
+            <marker date="1507607784958" expanded="true" signature="2057:2540" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -292,7 +299,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="101" column="23" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="23" />
           <folding>
-            <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
+            <marker date="1507607784958" expanded="true" signature="2057:2540" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -320,7 +327,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="52" selection-start-line="32" selection-start-column="52" selection-end-line="32" selection-end-column="52" />
           <folding>
-            <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
+            <marker date="1507607784958" expanded="true" signature="2057:2540" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -348,7 +355,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
+            <marker date="1507607784958" expanded="true" signature="2057:2540" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -376,7 +383,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
+            <marker date="1507607784958" expanded="true" signature="2057:2540" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -460,22 +467,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fullYearPicker.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.666667">
-          <caret line="122" column="60" selection-start-line="122" selection-start-column="60" selection-end-line="122" selection-end-column="60" />
+        <state vertical-scroll-proportion="-3.096774">
+          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="144" selection-end-column="9" />
           <folding>
-            <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
+            <element signature="n#style#0;n#input#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/fullYearPicker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4115108">
-          <caret line="131" column="34" selection-start-line="131" selection-start-column="34" selection-end-line="131" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.40863308">
+          <caret line="119" column="46" selection-start-line="119" selection-start-column="46" selection-end-line="119" selection-end-column="46" />
           <folding>
-            <element signature="n#style#0;n#input#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1507607784958" expanded="true" signature="2057:2540" placeholder="..." />
           </folding>
         </state>
       </provider>

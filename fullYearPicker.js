@@ -116,15 +116,18 @@
 				return me.find('td').each(function () {
 					var d = getDateStr(this);
 					var $t = $(this);
-					for (var i = 0; i < param.dc.length; i++)
-						if (d == param.dc[i].d&&!$t.hasClass('selected')){
-							var arr = param.dc[i].c.split(',');
+					for (var i = 0; i < param.dc.length; i++){
+						var tar = param.dc[i];
+						if (d == tar.d&&!$t.hasClass('selected')){
+							var arr = tar.c.split(',');
 							for(var j= 0;j<arr.length;j++){
 								var c_s = arr[j].split(':');
 								this.style[c_s[0]] = c_s[1];
 							}
 							$t.addClass('disabled').attr('title',param.dc[i].title||'');
 						}
+					}
+
 				});
 			}else if(config == 'setqujian'){
 				me.data('config').startmonth = param.star;
