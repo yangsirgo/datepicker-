@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d69939e6-7947-44c3-8ca6-851f6e84ecbd" name="Default" comment="">
+    <list default="true" id="d69939e6-7947-44c3-8ca6-851f6e84ecbd" name="Default" comment="设置禁用的日期 对已经select的日期可以取消勾选">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fullYearPicker.js" afterPath="$PROJECT_DIR$/fullYearPicker.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
@@ -28,8 +28,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43804035">
-              <caret line="192" column="6" selection-start-line="192" selection-start-column="6" selection-end-line="192" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.4115108">
+              <caret line="131" column="34" selection-start-line="131" selection-start-column="34" selection-end-line="131" selection-end-column="34" />
               <folding>
                 <element signature="n#style#0;n#input#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -40,10 +40,10 @@
       <file leaf-file-name="fullYearPicker.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fullYearPicker.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.233334">
-              <caret line="156" column="31" selection-start-line="156" selection-start-column="31" selection-end-line="156" selection-end-column="68" />
+            <state vertical-scroll-proportion="-14.666667">
+              <caret line="122" column="60" selection-start-line="122" selection-start-column="60" selection-end-line="122" selection-end-column="60" />
               <folding>
-                <marker date="1507538986427" expanded="true" signature="2057:2540" placeholder="..." />
+                <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -62,6 +62,7 @@
         <option value="$USER_HOME$/Documents/WXWork/1688852247294240/Cache/File/2017-09/mallDetail(3).js" />
         <option value="E:/js-pro/source/mall/discount/js/mallDetail.js" />
         <option value="E:/js-pro/source/mall/discount/js/mallMyorder.js" />
+        <option value="E:/js-pro/source/mall/gogogo_index/gogo-SubIndex.js" />
         <option value="$PROJECT_DIR$/fullYearPicker.js" />
         <option value="$PROJECT_DIR$/index.html" />
       </list>
@@ -104,7 +105,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -125,6 +125,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -148,7 +149,13 @@
       <option name="project" value="LOCAL" />
       <updated>1507531864229</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="设置禁用的日期 对已经select的日期可以取消勾选">
+      <created>1507539501498</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1507539501498</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -157,7 +164,6 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11470216" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -166,6 +172,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -187,13 +194,42 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="设置了颜色的日期不可选中 修复bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="设置了颜色的日期不可选中 修复bug" />
+    <MESSAGE value="设置禁用的日期 对已经select的日期可以取消勾选" />
+    <option name="LAST_COMMIT_MESSAGE" value="设置禁用的日期 对已经select的日期可以取消勾选" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="192" column="6" selection-start-line="192" selection-start-column="6" selection-end-line="192" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#input#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fullYearPicker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="150" column="24" selection-start-line="156" selection-start-column="31" selection-end-line="156" selection-end-column="68" />
+          <folding>
+            <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/js-pro/source/mall/gogogo_index/gogo-SubIndex.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -209,7 +245,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="119" column="103" selection-start-line="119" selection-start-column="103" selection-end-line="119" selection-end-column="103" />
           <folding>
-            <marker date="1507538986427" expanded="true" signature="2057:2540" placeholder="..." />
+            <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -236,7 +272,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="116" column="45" selection-start-line="116" selection-start-column="45" selection-end-line="116" selection-end-column="45" />
           <folding>
-            <marker date="1507538986427" expanded="true" signature="2057:2540" placeholder="..." />
+            <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -256,7 +292,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="101" column="23" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="23" />
           <folding>
-            <marker date="1507538986427" expanded="true" signature="2057:2540" placeholder="..." />
+            <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -284,7 +320,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="52" selection-start-line="32" selection-start-column="52" selection-end-line="32" selection-end-column="52" />
           <folding>
-            <marker date="1507538986427" expanded="true" signature="2057:2540" placeholder="..." />
+            <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -312,7 +348,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1507538986427" expanded="true" signature="2057:2540" placeholder="..." />
+            <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -340,7 +376,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1507538986427" expanded="true" signature="2057:2540" placeholder="..." />
+            <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -413,24 +449,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.85035974">
           <caret line="166" column="41" selection-start-line="166" selection-start-column="41" selection-end-line="166" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/js-pro/source/mall/gogogo_index/gogo-SubIndex.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.707989">
+          <caret line="21" column="35" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fullYearPicker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.233334">
-          <caret line="156" column="31" selection-start-line="156" selection-start-column="31" selection-end-line="156" selection-end-column="68" />
+        <state vertical-scroll-proportion="-14.666667">
+          <caret line="122" column="60" selection-start-line="122" selection-start-column="60" selection-end-line="122" selection-end-column="60" />
           <folding>
-            <marker date="1507538986427" expanded="true" signature="2057:2540" placeholder="..." />
+            <marker date="1507605981399" expanded="true" signature="2057:2540" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43804035">
-          <caret line="192" column="6" selection-start-line="192" selection-start-column="6" selection-end-line="192" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.4115108">
+          <caret line="131" column="34" selection-start-line="131" selection-start-column="34" selection-end-line="131" selection-end-column="34" />
           <folding>
             <element signature="n#style#0;n#input#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>

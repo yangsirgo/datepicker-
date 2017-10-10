@@ -62,8 +62,10 @@
 		.fullYearPicker table td.disabled{
 			color: rgb(84, 84, 84);
 			background-color: gray;
-			/*text-decoration:line-through;*/
 		}
+		.fullYearPicker table td.xianzhi{
+					 text-decoration:line-through;
+				 }
 		.fullYearPicker table td.selected{
 			color:blue;
 			font-weight: 800;
@@ -111,8 +113,8 @@
 				"2017-09-28"],//哪天被选中
 		startmonth:'2017-06-25',
 		endmonth:'2018-09-25',
-		pre_date_dis:'2017-09-25',//初始化设置禁用日期之前
-		aft_date_dis:'2017-09-29',//初始化设置禁用日期之后
+//		pre_date_dis:'2017-09-25',//初始化设置禁用日期之前
+//		aft_date_dis:'2017-09-29',//初始化设置禁用日期之后
 		roll_play:'admin',//admin管理员,user是普通用户
 		cellClick: function (dateStr,click_t) {
 			console.log(arguments)
@@ -133,13 +135,13 @@
 	$('#div1').fullYearPicker('setColors', {
 		dc: [
 			{d:'2017-9-10'},
-			{ d: '2017-06-01', c: 'red',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'},
-			{ d: '2017-06-02', c: 'red',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'},
-			{ d: '2017-06-03', c: 'red',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'},
-			{ d: '2017-07-01', c: 'gray',title:'节假日限制'},
-			{ d: '2017-07-02', c: 'gray',title:'互斥广告位：广告位名称'},
-			{ d: '2017-07-03', c: 'gray',title:'此时间未设置价格'},
-			{ d: '2017-09-28', c: 'green',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'}
+			{ d: '2017-06-01', c: 'backgroundColor:red', title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'},
+			{ d: '2017-06-02', c: 'backgroundColor:red',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'},
+			{ d: '2017-06-03', c: 'backgroundColor:red',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'},
+			{ d: '2017-07-01', c: 'textDecoration:line-through,backgroundColor:#fff',title:'节假日限制'},
+			{ d: '2017-07-02', c: 'textDecoration:line-through,backgroundColor:#fff',title:'互斥广告位：广告位名称'},
+			{ d: '2017-07-03', c: 'textDecoration:line-through,backgroundColor:#fff',title:'此时间未设置价格'},
+			{ d: '2017-09-28', c: 'backgroundColor:green',title:'申请人：root\n订单标题：测试测试\n订单编号：XA-21625\n地区：\n订单状态：取消审核'}
 		]
 	});
 
