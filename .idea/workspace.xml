@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d69939e6-7947-44c3-8ca6-851f6e84ecbd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fullYearPicker.js" afterPath="$PROJECT_DIR$/fullYearPicker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="日历插件.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -161,7 +159,13 @@
       <option name="project" value="LOCAL" />
       <updated>1507606227042</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="设置限制日期  国庆节假日设置样式">
+      <created>1507607793635</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1507607793635</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
